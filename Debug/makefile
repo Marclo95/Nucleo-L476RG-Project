@@ -60,8 +60,8 @@ all: main-build
 main-build: TP_MICRO.elf secondary-outputs
 
 # Tool invocations
-TP_MICRO.elf TP_MICRO.map: $(OBJS) $(USER_OBJS) C:\Users\marca\STM32CubeIDE\workspace_1.17.0\TP_MICRO\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TP_MICRO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\marca\STM32CubeIDE\workspace_1.17.0\TP_MICRO\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_MICRO.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+TP_MICRO.elf TP_MICRO.map: $(OBJS) $(USER_OBJS) D:\Users\marca\STM32CubeIDE\workspace_1.17.0\TP_MICRO\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TP_MICRO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\marca\STM32CubeIDE\workspace_1.17.0\TP_MICRO\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_MICRO.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

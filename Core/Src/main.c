@@ -18,9 +18,28 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stdio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "MCP23S17.h"
+extern SPI_HandleTypeDef hspi3;  // SPI3
+
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+=======
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 #define MCP23S17_ADDRESS   0x40  // Adresse SPI du MCP23S17 (A0, A1, A2 = GND)
 #define MCP23S17_IODIRA    0x00  // Registre direction PORTA
 #define MCP23S17_IODIRB    0x01  // Registre direction PORTB
@@ -28,6 +47,8 @@
 #define MCP23S17_GPIOB     0x13  // Registre des données PORTB
 #define MCP23S17_IOCON     0x0A  // Registre de configuration
 
+<<<<<<< HEAD
+=======
 
 extern SPI_HandleTypeDef hspi3;  // SPI3
 
@@ -47,11 +68,28 @@ extern SPI_HandleTypeDef hspi3;  // SPI3
 
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
+<<<<<<< HEAD
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+I2C_HandleTypeDef hi2c1;
+
+SAI_HandleTypeDef hsai_BlockA2;
+SAI_HandleTypeDef hsai_BlockB2;
+DMA_HandleTypeDef hdma_sai2_a;
+DMA_HandleTypeDef hdma_sai2_b;
+
+SPI_HandleTypeDef hspi3;
+
+TIM_HandleTypeDef htim2;
+
+=======
 
 
 /* USER CODE END PM */
@@ -59,16 +97,32 @@ extern SPI_HandleTypeDef hspi3;  // SPI3
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi3;
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+<<<<<<< HEAD
+void PeriphCommonClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
+static void MX_USART2_UART_Init(void);
+static void MX_SPI3_Init(void);
+static void MX_TIM2_Init(void);
+static void MX_I2C1_Init(void);
+static void MX_SAI2_Init(void);
+/* USER CODE BEGIN PFP */
+
+=======
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI3_Init(void);
@@ -77,11 +131,14 @@ void MCP23S17_WriteRegister(uint8_t reg, uint8_t value);
 
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+<<<<<<< HEAD
+=======
 int __io_putchar(int chr)
 {
  HAL_UART_Transmit(&huart2, (uint8_t*)&chr, 1, HAL_MAX_DELAY);
@@ -100,6 +157,7 @@ void MCP23S17_WriteRegister(uint8_t reg, uint8_t value) {
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);   // Désactiver CS
 }
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /* USER CODE END 0 */
 
 /**
@@ -111,8 +169,11 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -122,21 +183,46 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
+<<<<<<< HEAD
+  /* Configure the peripherals common clocks */
+  PeriphCommonClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+=======
   /* USER CODE BEGIN SysInit */
 
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+<<<<<<< HEAD
+  MX_DMA_Init();
+  MX_USART2_UART_Init();
+  MX_SPI3_Init();
+  MX_TIM2_Init();
+  MX_I2C1_Init();
+  MX_SAI2_Init();
+  /* USER CODE BEGIN 2 */
+  __HAL_SAI_ENABLE(&hsai_BlockA2);
+
+    printf("\r\n==== Systeme micro ====\r\n");
+
+    // RESET du MCP23S17 via PA0
+=======
   MX_USART2_UART_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
@@ -144,6 +230,7 @@ int main(void)
   printf("\r\n==== Systeme micro ====\r\n");
 
   // RESET du MCP23S17 via PA0
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
     HAL_Delay(10);
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
@@ -158,6 +245,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+<<<<<<< HEAD
+  while (1)
+  {
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+=======
 
   while (1) {
 
@@ -175,6 +272,7 @@ int main(void)
   /* USER CODE END 3 */
 }
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -225,6 +323,131 @@ void SystemClock_Config(void)
 }
 
 /**
+<<<<<<< HEAD
+  * @brief Peripherals Common Clock Configuration
+  * @retval None
+  */
+void PeriphCommonClock_Config(void)
+{
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+  /** Initializes the peripherals clock
+  */
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_SAI2;
+  PeriphClkInit.Sai2ClockSelection = RCC_SAI2CLKSOURCE_PLLSAI1;
+  PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSI;
+  PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+  PeriphClkInit.PLLSAI1.PLLSAI1N = 13;
+  PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV17;
+  PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+  PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_SAI1CLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.Timing = 0x10D19CE4;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Analogue filter
+  */
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Digital filter
+  */
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
+  * @brief SAI2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SAI2_Init(void)
+{
+
+  /* USER CODE BEGIN SAI2_Init 0 */
+
+  /* USER CODE END SAI2_Init 0 */
+
+  /* USER CODE BEGIN SAI2_Init 1 */
+
+  /* USER CODE END SAI2_Init 1 */
+  hsai_BlockA2.Instance = SAI2_Block_A;
+  hsai_BlockA2.Init.AudioMode = SAI_MODEMASTER_TX;
+  hsai_BlockA2.Init.Synchro = SAI_ASYNCHRONOUS;
+  hsai_BlockA2.Init.OutputDrive = SAI_OUTPUTDRIVE_DISABLE;
+  hsai_BlockA2.Init.NoDivider = SAI_MASTERDIVIDER_ENABLE;
+  hsai_BlockA2.Init.FIFOThreshold = SAI_FIFOTHRESHOLD_EMPTY;
+  hsai_BlockA2.Init.AudioFrequency = SAI_AUDIO_FREQUENCY_48K;
+  hsai_BlockA2.Init.SynchroExt = SAI_SYNCEXT_DISABLE;
+  hsai_BlockA2.Init.MonoStereoMode = SAI_STEREOMODE;
+  hsai_BlockA2.Init.CompandingMode = SAI_NOCOMPANDING;
+  hsai_BlockA2.Init.TriState = SAI_OUTPUT_NOTRELEASED;
+  if (HAL_SAI_InitProtocol(&hsai_BlockA2, SAI_I2S_STANDARD, SAI_PROTOCOL_DATASIZE_16BIT, 2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  hsai_BlockB2.Instance = SAI2_Block_B;
+  hsai_BlockB2.Init.AudioMode = SAI_MODESLAVE_RX;
+  hsai_BlockB2.Init.Synchro = SAI_SYNCHRONOUS;
+  hsai_BlockB2.Init.OutputDrive = SAI_OUTPUTDRIVE_DISABLE;
+  hsai_BlockB2.Init.FIFOThreshold = SAI_FIFOTHRESHOLD_EMPTY;
+  hsai_BlockB2.Init.SynchroExt = SAI_SYNCEXT_DISABLE;
+  hsai_BlockB2.Init.MonoStereoMode = SAI_STEREOMODE;
+  hsai_BlockB2.Init.CompandingMode = SAI_NOCOMPANDING;
+  hsai_BlockB2.Init.TriState = SAI_OUTPUT_NOTRELEASED;
+  if (HAL_SAI_InitProtocol(&hsai_BlockB2, SAI_I2S_STANDARD, SAI_PROTOCOL_DATASIZE_16BIT, 2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SAI2_Init 2 */
+
+  /* USER CODE END SAI2_Init 2 */
+
+}
+
+/**
+=======
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   * @brief SPI3 Initialization Function
   * @param None
   * @retval None
@@ -243,11 +466,19 @@ static void MX_SPI3_Init(void)
   hspi3.Instance = SPI3;
   hspi3.Init.Mode = SPI_MODE_MASTER;
   hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+<<<<<<< HEAD
+  hspi3.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi3.Init.NSS = SPI_NSS_SOFT;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+=======
   hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi3.Init.NSS = SPI_NSS_SOFT;
   hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -265,6 +496,58 @@ static void MX_SPI3_Init(void)
 }
 
 /**
+<<<<<<< HEAD
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 0;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 4294967295;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+  HAL_TIM_MspPostInit(&htim2);
+
+}
+
+/**
+=======
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -274,14 +557,20 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE BEGIN USART2_Init 0 */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END USART2_Init 0 */
 
   /* USER CODE BEGIN USART2_Init 1 */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
   huart2.Init.BaudRate = 115200;
@@ -299,13 +588,38 @@ static void MX_USART2_UART_Init(void)
   }
   /* USER CODE BEGIN USART2_Init 2 */
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /* USER CODE END USART2_Init 2 */
 
 }
 
 /**
+<<<<<<< HEAD
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel6_IRQn);
+  /* DMA1_Channel7_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
+
+}
+
+/**
+=======
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -314,7 +628,10 @@ static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
+<<<<<<< HEAD
+=======
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
@@ -323,6 +640,11 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+<<<<<<< HEAD
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, VU_nRESET_Pin|LD2_Pin, GPIO_PIN_RESET);
+
+=======
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, VU_nRESET_Pin|LD2_Pin, GPIO_PIN_RESET);
@@ -330,6 +652,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(VU_nCS_GPIO_Port, VU_nCS_Pin, GPIO_PIN_RESET);
 
+>>>>>>> 11a6642a471301b46d36d71e8211aff4d04192d5
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
@@ -343,6 +666,47 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+<<<<<<< HEAD
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
+}
+
+/* USER CODE BEGIN 4 */
+
+/* USER CODE END 4 */
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
+void Error_Handler(void)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  __disable_irq();
+  while (1)
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */
+}
+
+#ifdef  USE_FULL_ASSERT
+/**
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
+void assert_failed(uint8_t *file, uint32_t line)
+{
+  /* USER CODE BEGIN 6 */
+  /* User can add his own implementation to report the file name and line number,
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+  /* USER CODE END 6 */
+}
+#endif /* USE_FULL_ASSERT */
+=======
   /*Configure GPIO pin : VU_nCS_Pin */
   GPIO_InitStruct.Pin = VU_nCS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -387,3 +751,4 @@ static void MX_GPIO_Init(void)
         /* USER CODE END 6 */
     }
     #endif /* USE_FULL_ASSERT */
+
